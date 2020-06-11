@@ -80,4 +80,6 @@ spec:
               key: storage-prefix
         - name: PLYNX_CONFIG_PATH
           value: /etc/plynx-config/config.yaml
+        - name: KUBECONFIG
+          value: /app/kubeconfig.yaml
       restartPolicy: Always

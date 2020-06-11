@@ -46,6 +46,10 @@ spec:
           - "basic-dag-operation"
           - "-e"
           - "basic-dag-workflow"
+          - "-e"
+          - "k8s-bash-jinja2-operation"
+          - "-e"
+          - "k8s-python-node-operation"
         imagePullPolicy: Always
         volumeMounts:
         - name: google-cloud-key
@@ -67,4 +71,6 @@ spec:
               key: storage-prefix
         - name: PLYNX_CONFIG_PATH
           value: /etc/plynx-config/config.yaml
+        - name: KUBECONFIG
+          value: /app/kubeconfig.yaml
       restartPolicy: Always
