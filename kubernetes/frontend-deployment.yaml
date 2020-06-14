@@ -18,7 +18,7 @@ spec:
         io.kompose.service: frontend
     spec:
       containers:
-      - image: plynxteam/ui:1.2.5
+      - image: plynxteam/ui:1.3.0
         name: frontend
         ports:
         - containerPort: 80
