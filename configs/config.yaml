@@ -116,7 +116,7 @@ plugins:
     - kind: k8s-bash-jinja2-operation
       title: Kubernetes BashJinja2
       executor: plynx.plugins.executors.kubernetes.BashJinja2
-      icon: feathericons.cloud
+      icon: plynx.kubernetes
       color: '#0f0'
       resources:
         - file
@@ -131,7 +131,7 @@ plugins:
     - kind: k8s-python-node-operation
       title: Kubernetes Python
       executor: plynx.plugins.executors.kubernetes.PythonNode
-      icon: feathericons.cloud
+      icon: plynx.kubernetes
       color: '#2196f3'
       resources:
         - file
