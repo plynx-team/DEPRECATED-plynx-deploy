@@ -1,4 +1,4 @@
-plynx==1.2.4
+plynx==1.2.5
 python-dateutil==2.8.0
 google-cloud-storage==1.28.1
 google-auth==1.15.0
