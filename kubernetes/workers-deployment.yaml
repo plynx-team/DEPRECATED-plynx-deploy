@@ -26,7 +26,7 @@ spec:
         configMap:
           name: plynx-config
       containers:
-      - image: plynxteam/plynx-deploy:latest
+      - image: plynxteam/plynx-deploy:0.3.0
         name: worker
         command:
           - plynx

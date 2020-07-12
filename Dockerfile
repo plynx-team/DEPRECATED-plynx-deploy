@@ -13,3 +13,9 @@ ADD ./configs/kubeconfig.yaml /app/kubeconfig.yaml
 
 RUN mkdir test_data
 ADD ./static_templates.json /app/test_data/demo_templates.json
+
+
+# Install plugins
+ADD ./plynx_deploy /app/plynx_deploy
+ADD ./setup.py /app/setup.py
+RUN python /app/setup.py install

@@ -63,7 +63,35 @@ plugins:
       cls: plynx.plugins.resources.cloud_resources.CloudStorage
       icon: feathericons.hard-drive
       color: '#5ed1ff'
+    - kind: tensorflow-model
+      title: Tensorflow Model
+      cls: plynx_deploy.resources.TensorflowModel
+      icon: feathericons.layers
+      color: '#ffd100'
+    - kind: numpy-array
+      title: Numpy Array
+      cls: plynx_deploy.resources.NumpyArray
+      icon: feathericons.grid
+      color: '#5ed1ff'
   operations:
+    - kind: basic-file
+      title: File
+      executor: plynx.plugins.executors.local.File
+      icon: feathericons.file
+      color: '#fff'
+      is_static: true
+      resources:
+        - file
+        - pdf
+        - image
+        - csv
+        - tsv
+        - json
+        - executable
+        - directory
+        - cloud-storage
+        - tensorflow-model
+        - numpy-array
     - kind: basic-bash-jinja2-operation
       title: Basic BashJinja2
       executor: plynx.plugins.executors.local.BashJinja2
@@ -79,6 +107,8 @@ plugins:
         - executable
         - directory
         - cloud-storage
+        - tensorflow-model
+        - numpy-array
     - kind: basic-python-node-operation
       title: Basic Python
       executor: plynx.plugins.executors.local.PythonNode
@@ -94,6 +124,8 @@ plugins:
         - executable
         - directory
         - cloud-storage
+        - tensorflow-model
+        - numpy-array
     - kind: basic-dag-operation
       title: Composite Operation
       executor: plynx.plugins.executors.dag.DAG
@@ -113,6 +145,8 @@ plugins:
         - executable
         - directory
         - cloud-storage
+        - tensorflow-model
+        - numpy-array
     - kind: k8s-bash-jinja2-operation
       title: Kubernetes BashJinja2
       executor: plynx.plugins.executors.kubernetes.BashJinja2
@@ -128,6 +162,8 @@ plugins:
         - executable
         - directory
         - cloud-storage
+        - tensorflow-model
+        - numpy-array
     - kind: k8s-python-node-operation
       title: Kubernetes Python
       executor: plynx.plugins.executors.kubernetes.PythonNode
@@ -143,6 +179,8 @@ plugins:
         - executable
         - directory
         - cloud-storage
+        - tensorflow-model
+        - numpy-array
   hubs:
     - kind: db-hub
       title: Database hub
@@ -156,9 +194,18 @@ plugins:
           - k8s-bash-jinja2-operation
           - k8s-python-node-operation
         collection: templates
+    - kind: db-files-hub
+      title: Files
+      icon: feathericons.file
+      cls: plynx.plugins.hubs.collection.CollectionHub
+      args:
+        operations:
+          - basic-file
+        collection: templates
   workflows:
     - kind: basic-dag-workflow
       title: Basic DAG Workflow
       executor: plynx.plugins.executors.dag.DAG
       hubs:
         - db-hub
+        - db-files-hub

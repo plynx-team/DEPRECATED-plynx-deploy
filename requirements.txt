@@ -1,5 +1,10 @@
-plynx==1.3.0
+plynx==1.4.1
 python-dateutil==2.8.0
 google-cloud-storage==1.28.1
 google-auth==1.15.0
 kubernetes==11.0.0
+
+numpy==1.19.0
+pandas==1.0.5
+scipy==1.5.1
+matplotlib==3.2.2
