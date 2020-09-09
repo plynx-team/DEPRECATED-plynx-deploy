@@ -209,3 +209,13 @@ plugins:
       hubs:
         - db-hub
         - db-files-hub
+
+default_policies:
+  - CAN_VIEW_OTHERS_OPERATIONS
+  - CAN_VIEW_OTHERS_WORKFLOWS
+  - CAN_VIEW_OPERATIONS
+  - CAN_VIEW_WORKFLOWS
+  - CAN_CREATE_OPERATIONS
+  - CAN_CREATE_WORKFLOWS
+  - CAN_MODIFY_OTHERS_WORKFLOWS
+  - CAN_RUN_WORKFLOWS
