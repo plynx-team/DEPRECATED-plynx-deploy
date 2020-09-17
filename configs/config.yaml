@@ -63,11 +63,6 @@ plugins:
       cls: plynx.plugins.resources.cloud_resources.CloudStorage
       icon: feathericons.hard-drive
       color: '#5ed1ff'
-    - kind: tensorflow-model
-      title: Tensorflow Model
-      cls: plynx_deploy.resources.TensorflowModel
-      icon: feathericons.layers
-      color: '#ffd100'
     - kind: numpy-array
       title: Numpy Array
       cls: plynx_deploy.resources.NumpyArray
@@ -90,7 +85,6 @@ plugins:
         - executable
         - directory
         - cloud-storage
-        - tensorflow-model
         - numpy-array
     - kind: basic-bash-jinja2-operation
       title: Basic BashJinja2
@@ -107,7 +101,6 @@ plugins:
         - executable
         - directory
         - cloud-storage
-        - tensorflow-model
         - numpy-array
     - kind: basic-python-node-operation
       title: Basic Python
@@ -124,7 +117,6 @@ plugins:
         - executable
         - directory
         - cloud-storage
-        - tensorflow-model
         - numpy-array
     - kind: basic-dag-operation
       title: Composite Operation
@@ -145,7 +137,6 @@ plugins:
         - executable
         - directory
         - cloud-storage
-        - tensorflow-model
         - numpy-array
     - kind: k8s-bash-jinja2-operation
       title: Kubernetes BashJinja2
@@ -162,7 +153,6 @@ plugins:
         - executable
         - directory
         - cloud-storage
-        - tensorflow-model
         - numpy-array
     - kind: k8s-python-node-operation
       title: Kubernetes Python
@@ -179,7 +169,6 @@ plugins:
         - executable
         - directory
         - cloud-storage
-        - tensorflow-model
         - numpy-array
   hubs:
     - kind: db-hub

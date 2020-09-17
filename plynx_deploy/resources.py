@@ -3,10 +3,6 @@ import plynx.base.resource
 import plynx.plugins.resources.common
 
 
-class TensorflowModel(plynx.plugins.resources.common.Directory):
-    pass
-
-
 class NumpyArray(plynx.base.resource.BaseResource):
     @classmethod
     def preview(cls, preview_object):
