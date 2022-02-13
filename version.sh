@@ -1,3 +1,3 @@
 function getVersion() {
-  echo "0.4.3"
+  echo "0.5.0"
 }
