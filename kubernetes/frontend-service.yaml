@@ -6,7 +6,7 @@ metadata:
     kompose.version: 1.18.0 ()
   creationTimestamp: null
   labels:
-    io.kompose.service: frontend
+    app.kubernetes.io/name: frontend
   name: frontend
 spec:
   type: LoadBalancer
@@ -14,6 +14,6 @@ spec:
   - port: 80
     protocol: TCP
   selector:
-    io.kompose.service: frontend
+    app.kubernetes.io/name: frontend
 status:
   loadBalancer: {}

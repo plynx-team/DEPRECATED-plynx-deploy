@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
@@ -12,11 +12,14 @@ spec:
   replicas: 1
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+       app.kubernetes.io/name: worker
   template:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: worker
+        app.kubernetes.io/name: worker
     spec:
       volumes:
       - name: google-cloud-key
@@ -26,7 +29,7 @@ spec:
         configMap:
           name: plynx-config
       containers:
-      - image: plynxteam/plynx-deploy:0.4.3
+      - image: plynxteam/plynx-deploy:0.5.4
         name: worker
         command:
           - plynx
@@ -50,6 +53,8 @@ spec:
           - "k8s-bash-jinja2-operation"
           - "-e"
           - "k8s-python-node-operation"
+          - "-e"
+          - "python-workflow"
         imagePullPolicy: Always
         volumeMounts:
         - name: google-cloud-key

@@ -5,8 +5,8 @@ mongodb:
   port: 27017
 
 storage:
-  scheme: file
-  prefix: /data/resources/
+  scheme: gs
+  prefix: gs://plynx-prod-bucket/resources/
 
 auth:
   secret_key:
@@ -20,6 +20,7 @@ web:
 demo:
   enabled: true
   template_id: 5ee178682ff29bf2266f9f1f
+  # kind: python-workflow
 
 plugins:
   resources:
