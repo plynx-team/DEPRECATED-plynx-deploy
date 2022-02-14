@@ -32,7 +32,7 @@ spec:
         configMap:
           name: plynx-config
       containers:
-      - image: plynxteam/plynx-deploy:0.5.4
+      - image: plynxteam/plynx-deploy:0.5.6
         name: backend
         command:
           - plynx

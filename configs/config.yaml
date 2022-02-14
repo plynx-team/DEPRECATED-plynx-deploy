@@ -19,7 +19,7 @@ web:
 
 demo:
   enabled: true
-  template_id: 5ee178682ff29bf2266f9f1f
+  template_id: 6209e17fd796b067d982bd8f
   # kind: python-workflow
 
 plugins:
