@@ -231,6 +231,14 @@ plugins:
       cls: plynx.plugins.hubs.static_list.StaticListHub
       args:
         list_module: plynx.demo.COLLECTION
+    - kind: db-hub-python
+      title: Database hub
+      icon: feathericons.database
+      cls: plynx.plugins.hubs.collection.CollectionHub
+      args:
+        operations:
+          - python-code-operation
+        collection: templates
   workflows:
     - kind: basic-dag-workflow
       title: Basic DAG Workflow
@@ -243,7 +251,7 @@ plugins:
       executor: plynx.plugins.executors.python.dag.DAG
       hubs:
         - static-hub
-        - db-hub
+        - db-hub-python
 
 default_policies:
   - CAN_VIEW_OTHERS_OPERATIONS
