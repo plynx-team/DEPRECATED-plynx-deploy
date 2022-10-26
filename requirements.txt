@@ -1,6 +1,7 @@
-plynx==1.8.1
+plynx==1.8.2
 python-dateutil==2.8.0
 google-cloud-storage==2.1.0
 google-auth==2.6.0
 kubernetes==11.0.0
 opencv-python==4.6.0.66
+scikit-image==0.19.3

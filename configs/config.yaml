@@ -14,7 +14,7 @@ auth:
 web:
   host: '0.0.0.0'
   port: 5000
-  endpoint: https://platform.plynx.com
+  endpoint: https://platform.plynx.com/plynx/api/v0
   debug: true
 
 demo:
@@ -90,6 +90,15 @@ plugins:
       title: bool
       cls: plynx.plugins.resources.common.Raw
       icon: plynx.python-bool
+    - kind: py-json-file
+      title: Python JSON file
+      cls: plynx.plugins.resources.python.common.Json
+      icon: feathericons.file-text
+      color: '#ff3333'
+    - kind: py-image-file
+      title: Python image
+      cls: plynx_deploy.resources.Image
+      icon: plynx.image
 
   operations:
     - kind: basic-file
@@ -108,7 +117,6 @@ plugins:
         - executable
         - directory
         - cloud-storage
-        - numpy-array
     - kind: basic-bash-jinja2-operation
       title: Basic BashJinja2
       executor: plynx.plugins.executors.local.BashJinja2
@@ -124,7 +132,6 @@ plugins:
         - executable
         - directory
         - cloud-storage
-        - numpy-array
     - kind: basic-python-node-operation
       title: Basic Python
       executor: plynx.plugins.executors.local.PythonNode
@@ -140,7 +147,6 @@ plugins:
         - executable
         - directory
         - cloud-storage
-        - numpy-array
     - kind: python-code-operation
       title: Python Code Operation
       executor: plynx.plugins.executors.python.local.PythonNode
@@ -152,6 +158,8 @@ plugins:
         - dict
         - float
         - bool
+        - py-json-file
+        - py-image-file
     - kind: basic-dag-operation
       title: Composite Operation
       executor: plynx.plugins.executors.dag.DAG
@@ -171,39 +179,17 @@ plugins:
         - executable
         - directory
         - cloud-storage
-        - numpy-array
-    - kind: k8s-bash-jinja2-operation
-      title: Kubernetes BashJinja2
-      executor: plynx.plugins.executors.kubernetes.BashJinja2
-      icon: plynx.kubernetes
-      color: '#0f0'
+
+    - kind: python-basic-file
+      title: Python File
+      executor: plynx.plugins.executors.local.File
+      icon: feathericons.file
+      color: '#ff0'
+      is_static: true
       resources:
-        - file
-        - pdf
-        - image
-        - csv
-        - tsv
-        - json
-        - executable
-        - directory
-        - cloud-storage
-        - numpy-array
-    - kind: k8s-python-node-operation
-      title: Kubernetes Python
-      executor: plynx.plugins.executors.kubernetes.PythonNode
-      icon: plynx.kubernetes
-      color: '#2196f3'
-      resources:
-        - file
-        - pdf
-        - image
-        - csv
-        - tsv
-        - json
-        - executable
-        - directory
-        - cloud-storage
-        - numpy-array
+        - py-json-file
+        - py-image-file
+
   hubs:
     - kind: db-hub
       title: Database hub
@@ -214,8 +200,6 @@ plugins:
           - basic-bash-jinja2-operation
           - basic-python-node-operation
           - basic-dag-operation
-          - k8s-bash-jinja2-operation
-          - k8s-python-node-operation
         collection: templates
     - kind: db-files-hub
       title: Files
@@ -231,6 +215,12 @@ plugins:
       cls: plynx.plugins.hubs.static_list.StaticListHub
       args:
         list_module: plynx.demo.COLLECTION
+    - kind: static-hub-opencv
+      title: OpenCV
+      icon: feathericons.eye
+      cls: plynx.plugins.hubs.static_list.StaticListHub
+      args:
+        list_module: plynx_deploy.cv.COLLECTION
     - kind: db-hub-python
       title: Database hub
       icon: feathericons.database
@@ -238,6 +228,7 @@ plugins:
       args:
         operations:
           - python-code-operation
+          - python-basic-file
         collection: templates
   workflows:
     - kind: basic-dag-workflow
@@ -250,6 +241,7 @@ plugins:
       title: Python Workflow
       executor: plynx.plugins.executors.python.dag.DAG
       hubs:
+        - static-hub-opencv
         - static-hub
         - db-hub-python
 

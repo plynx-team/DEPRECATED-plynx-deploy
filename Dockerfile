@@ -13,6 +13,14 @@ ADD ./configs/kubeconfig.yaml /app/kubeconfig.yaml
 
 RUN mkdir test_data
 
+# Install additional linux packages
+RUN apt-get update
+RUN apt-get install -y \
+    ffmpeg \
+    libsm6 \
+    libxext6 \
+    vim
+RUN rm -rf /var/lib/apt/lists/*
 
 # Install plugins
 ADD ./plynx_deploy /app/plynx_deploy
