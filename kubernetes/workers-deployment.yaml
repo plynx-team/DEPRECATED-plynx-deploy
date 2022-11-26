@@ -29,7 +29,7 @@ spec:
         configMap:
           name: plynx-config
       containers:
-      - image: plynxteam/plynx-deploy:0.7.0
+      - image: plynxteam/plynx-deploy:0.7.1
         name: worker
         command:
           - plynx
