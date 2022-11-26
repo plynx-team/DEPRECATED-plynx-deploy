@@ -2,14 +2,11 @@ FROM python:3.8
 
 WORKDIR /app
 
-COPY ./requirements.txt /tmp/requirements.txt
-RUN pip install -r /tmp/requirements.txt
-
-RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
-RUN chmod +x ./kubectl
-RUN mv ./kubectl /usr/local/bin/kubectl
-
-ADD ./configs/kubeconfig.yaml /app/kubeconfig.yaml
+# # kubectl support:
+# RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+# RUN chmod +x ./kubectl
+# RUN mv ./kubectl /usr/local/bin/kubectl
+# ADD ./configs/kubeconfig.yaml /app/kubeconfig.yaml
 
 RUN mkdir test_data
 
@@ -21,6 +18,11 @@ RUN apt-get install -y \
     libxext6 \
     vim
 RUN rm -rf /var/lib/apt/lists/*
+
+COPY ./requirements.txt /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt
+# Detectron2
+# RUN python -m pip install 'git+https://github.com/facebookresearch/detectron2.git@32bd159d7263683e39bf4e87e5c4ac88bad2fd73'
 
 # Install plugins
 ADD ./plynx_deploy /app/plynx_deploy

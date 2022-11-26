@@ -151,6 +151,46 @@ def to_gray(img):
     }
 
 
+@plynx.node.input(name='gray', var_type="py-image-file")
+@plynx.node.output(name='img', var_type="py-image-file")
+@plynx.node.operation(
+    title="To RGB image",
+)
+def to_rgb(gray):
+    return {
+        "img": cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR),
+    }
+
+
+@plynx.node.input(name='img', var_type="py-image-file")
+@plynx.node.output(name='red', var_type="py-image-file")
+@plynx.node.output(name='green', var_type="py-image-file")
+@plynx.node.output(name='blue', var_type="py-image-file")
+@plynx.node.operation(
+    title="Split RGB channels",
+)
+def split_rgb_channels(img):
+    blue, green, red = cv2.split(img)
+    return {
+        "red": red,
+        "green": green,
+        "blue": blue,
+    }
+
+
+@plynx.node.input(name='red', var_type="py-image-file")
+@plynx.node.input(name='green', var_type="py-image-file")
+@plynx.node.input(name='blue', var_type="py-image-file")
+@plynx.node.output(name='img', var_type="py-image-file")
+@plynx.node.operation(
+    title="Merge RGB channels",
+)
+def merge_rgb_channels(red, green, blue):
+    return {
+        "img": cv2.merge([blue, green, red]),
+    }
+
+
 blurs = plynx.node.utils.Group(
     title="Blurs",
     items=[
@@ -187,6 +227,9 @@ others = plynx.node.utils.Group(
     items=[
         sharpen_image,
         to_gray,
+        to_rgb,
+        split_rgb_channels,
+        merge_rgb_channels,
     ]
 )
 
